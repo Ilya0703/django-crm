@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM - Главная</title>
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="applications">Заявки</a></li>
+                <li><a href="clients">Клиенты</a></li>
+                <li><a href="products">Продукты</a></li>
+                <li><a href="sales">Продажи</a></li>
+                <li><a href="workers">Сотрудники</a></li>
+                <li class="inactive"><a href="#" class="disabled">Отчеты</a>
+                    <ul>
+                        <li><a href="applications_report">Заявки</a></li>
+                        <li><a href="sales_report">Продажи</a></li>
+                        <li><a href="clients_report">Клиенты</a></li>
+                        <li><a href="products_report">Продукты</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="card">
+                <h2>CRM</h2>
+                <p>Это мощный инструмент для управления взаимоотношениями с клиентами, который позволяет:</p>
+                <ul>
+                    <li>Эффективно обрабатывать заявки и заказы</li>
+                    <li>Вести учет клиентов и их контактной информации</li>
+                    <li>Анализировать продажи и формировать отчеты</li>
+                    <li>Отслеживать работу сотрудников</li>
+                </ul>
+                <p>Используйте меню слева, чтобы перейти к нужному разделу.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

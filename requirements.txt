@@ -1,0 +1,2 @@
+django==5.0.7
+django-google-charts==0.1.1

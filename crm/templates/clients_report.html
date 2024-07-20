@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM - Отчет по клиентам</title>
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="applications">Заявки</a></li>
+                <li><a href="clients">Клиенты</a></li>
+                <li><a href="products">Продукты</a></li>
+                <li><a href="sales">Продажи</a></li>
+                <li><a href="workers">Сотрудники</a></li>
+                <li class="inactive"><a href="#" class="disabled">Отчеты</a>
+                <ul>
+                    <li><a href="applications_report">Заявки</a></li>
+                    <li><a href="sales_report">Продажи</a></li>
+                    <li><a href="clients_report">Клиенты</a></li>
+                    <li><a href="products_report">Продукты</a></li>
+                </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h2>Отчет по клиентам</h2>
+
+            <h3>Диаграмма городов клиентов</h3>
+            <div id="status-chart" style="width: 900px; height: 500px;"></div>
+            <script>
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable({{ cityChartData|safe }});
+                    var options = {
+                        title: 'Город клиента',
+                        is3D: true,
+                    };
+                    var chart = new google.visualization.PieChart(document.getElementById('status-chart'));
+                    chart.draw(data, options);
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>

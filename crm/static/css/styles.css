@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #666;
+    color: #fff;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar a:hover {
+    background-color: #555;
+}
+
+.sidebar li.inactive a {
+    background-color: #888;
+    cursor: default; /* Убрал pointer-events */
+    color: #888; /* Сделал текст серым */
+}
+
+.sidebar li.inactive a:hover {
+    background-color: #888;
+}
+
+.sidebar li.inactive ul {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #666;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+    z-index: 1;
+}
+
+.sidebar li.inactive:hover ul {
+    display: block;
+}
+
+.sidebar li.inactive ul a {
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h2 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.crm-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.crm-table th,
+.crm-table td {
+    padding: 10px;
+    border: 1px solid #222;
+    text-align: center;
+}
+
+.centered {
+    text-align: center;
+}
+
+.btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+.disabled {
+    color: #888;
+    cursor: default;
+    text-decoration: none;
+}

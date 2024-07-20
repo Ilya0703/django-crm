@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM - Сотрудники</title>
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="applications">Заявки</a></li>
+            <li><a href="clients">Клиенты</a></li>
+            <li><a href="products">Продукты</a></li>
+            <li><a href="sales">Продажи</a></li>
+            <li><a href="workers">Сотрудники</a></li>
+            <li class="inactive"><a href="#" class="disabled">Отчеты</a>
+                <ul>
+                    <li><a href="applications_report">Заявки</a></li>
+                    <li><a href="sales_report">Продажи</a></li>
+                    <li><a href="clients_report">Клиенты</a></li>
+                    <li><a href="products_report">Продукты</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+    <h2>Сотрудники</h2>
+    <div class="actions">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createWorkerModal">Добавить сотрудника</button>
+    </div>
+
+    <div class="modal fade" id="createWorkerModal" tabindex="-1" role="dialog" aria-labelledby="createWorkerModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="createWorkerModalLabel">Создать нового сотрудника</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form method="post" action="{% url 'create_worker' %}">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="worker_name">Имя сотрудника</label>
+                                <input type="text" class="form-control" id="worker_name" name="worker_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="worker_tel">Телефон</label>
+                                <input type="tel" class="form-control" id="worker_tel" name="worker_tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="worker_email">Email</label>
+                                <input type="worker_email" class="form-control" id="worker_email" name="worker_email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="worker_job_title">Должность</label>
+                                <input type="text" class="form-control" id="worker_job_title" name="worker_job_title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="worker_salary">Зарплата</label>
+                                <input type="number" class="form-control" id="worker_salary" name="worker_salary" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                            <button type="submit" class="btn btn-primary">Создать</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+    </div>
+
+        <table class="crm-table">
+                <thead>
+                    <tr>
+                        <th>Сотрудники</th>
+                        <th>Телефон</th>
+                        <th>Email</th>
+                        <th>Должность</th>
+                        <th>Зарплата</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for worker in workers %}
+                        <tr>
+                            <td class="centered">{{ worker.name }}</td>
+                            <td class="centered">{{ worker.tel }}</td>
+                            <td class="centered">{{ worker.email }}</td>
+                            <td class="centered">{{ worker.jobTitle }}</td>
+                            <td class="centered">{{ worker.salary }}</td>
+                            <td class="centered">
+                                <form method="post" action="{% url 'workers' %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="worker_id" value="{{ worker.id }}">
+                                    <button type="submit" name="action" value="delete" class="btn btn-danger">Удалить</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

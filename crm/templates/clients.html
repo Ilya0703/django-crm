@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM - Клиенты</title>
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="applications">Заявки</a></li>
+                <li><a href="clients">Клиенты</a></li>
+                <li><a href="products">Продукты</a></li>
+                <li><a href="sales">Продажи</a></li>
+                <li><a href="workers">Сотрудники</a></li>
+                <li class="inactive"><a href="#" class="disabled">Отчеты</a>
+                <ul>
+                    <li><a href="applications_report">Заявки</a></li>
+                    <li><a href="sales_report">Продажи</a></li>
+                    <li><a href="clients_report">Клиенты</a></li>
+                    <li><a href="products_report">Продукты</a></li>
+                </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h2>Клиенты</h2>
+            <table class="crm-table">
+                <thead>
+                    <tr>
+                        <th>Клиент</th>
+                        <th>Телефон</th>
+                        <th>Email</th>
+                        <th>Город</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for client in clients %}
+                        <tr>
+                            <td class="centered">{{ client.name }}</td>
+                            <td class="centered">{{ client.tel }}</td>
+                            <td class="centered">{{ client.email }}</td>
+                            <td class="centered">{{ client.city }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
