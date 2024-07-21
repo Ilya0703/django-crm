@@ -40,8 +40,7 @@ body {
 
 .sidebar li.inactive a {
     background-color: #888;
-    cursor: default; /* Убрал pointer-events */
-    color: #888; /* Сделал текст серым */
+    cursor: default;
 }
 
 .sidebar li.inactive a:hover {
@@ -128,7 +127,8 @@ body {
 }
 
 .disabled {
+    pointer-events: none;
     color: #888;
     cursor: default;
-    text-decoration: none;
+    text-decoration: underline;
 }

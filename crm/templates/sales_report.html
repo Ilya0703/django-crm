@@ -40,7 +40,7 @@
                 function drawChart() {
                     var data = google.visualization.arrayToDataTable({{ statusChartData|safe }});
                     var options = {
-                        title: 'Статус продаж',
+                        title: 'Продажа закрыта',
                         is3D: true,
                     };
                     var chart = new google.visualization.PieChart(document.getElementById('status-chart'));
@@ -57,7 +57,7 @@
                 function drawChart() {
                     var data = google.visualization.arrayToDataTable({{ priceChartData|safe }});
                     var options = {
-                        title: 'Цены заявок',
+                        title: 'Цены продаж',
                         legend: { position: 'none' },
                     };
                     var chart = new google.visualization.ColumnChart(document.getElementById('price-chart'));
